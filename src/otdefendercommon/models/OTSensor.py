@@ -13,6 +13,7 @@ class OTSensor(Base):
     location: Mapped[str] = mapped_column(String(255), nullable=False)
     mac: Mapped[str] = mapped_column(String(20), index=True, nullable=False)
     ip: Mapped[str] = mapped_column(String(45), index=True, nullable=False)
+    sensor_tag: Mapped[str] = mapped_column(String(200), nullable=False) # For registration and later identification.
     installation_date: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     updated_by: Mapped[str] = mapped_column(String(100), nullable=False)
     timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
@@ -25,3 +26,5 @@ class OTSensor(Base):
     assets: Mapped[List["OTAssets"]] = relationship(
         back_populates="sensor", cascade="all, delete-orphan"
     )
+
+

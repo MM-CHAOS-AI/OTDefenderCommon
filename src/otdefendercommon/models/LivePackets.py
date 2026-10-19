@@ -13,7 +13,7 @@ class LivePackets(Base):
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     asset_id: Mapped[int] = mapped_column(ForeignKey("ot_assets.id", ondelete="CASCADE"), index=True, nullable=False)
-    session_id: Mapped[Optional[int]] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="SET NULL"), index=True, nullable=True)
+    in_sensor_id: Mapped[int] = mapped_column(Integer, nullable=False)
     interface_id: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     interface_name: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
     
@@ -45,11 +45,9 @@ class LivePackets(Base):
 
     # Relationships
     asset: Mapped["OTAssets"] = relationship(back_populates="packets")
-    session: Mapped[Optional["CaptureSessionFiles"]] = relationship(back_populates="packets")
 
     __table_args__ = (
         Index('idx_asset_timestamp', 'asset_id', 'timestamp'),
-        Index('idx_session_timestamp', 'session_id', 'timestamp'),
         Index('idx_ips', 'src_ip', 'dst_ip'),
         Index('idx_macs', 'src_mac', 'dst_mac'),
     )
