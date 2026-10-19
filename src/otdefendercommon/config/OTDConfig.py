@@ -4,6 +4,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class OTDConfig(BaseSettings):
     # Declare properties with explicit Python type hints
+    ENTERPRISE_MANAGER_HOST:str = "localhost"
     OTDEF_VERSION:str = "0.0.0"
     RUN_MODE:str = "DEV"
     OTDEF_DB_FILE:str = "otdefdb_current.db"
@@ -12,6 +13,9 @@ class OTDConfig(BaseSettings):
     TIMEOUT:float = 30.0
     DEBUG:bool = True
     DB_ECHO:bool = False
+    #RAPID MQ
+    EM_MQ_QUEUE_NAME:str = "OTDEF_EM_QUEUE"
+    EM_MQ_PORT:int = 5672
 
     # For sensor
     PCAP_WATCH_DIR:str = "./PAC_WATCH"
