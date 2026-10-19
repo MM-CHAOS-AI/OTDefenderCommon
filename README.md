@@ -7,3 +7,7 @@ Adding as a uv dependency
 ---------------------------------
 uv add git+ssh://git@github.com/MM-CHAOS-AI/OTDefenderCommon.git
 
+For Sync with latest code
+-----------------------------------
+uv lock --upgrade-package OTDefenderCommon
+

@@ -16,6 +16,10 @@ class OTDConfig(BaseSettings):
     #RAPID MQ
     EM_MQ_QUEUE_NAME:str = "OTDEF_EM_QUEUE"
     EM_MQ_PORT:int = 5672
+    EM_MQ_USER:str = "OTDEF_USER"
+    EM_MQ_PASS:str = "OTDEF_PASS@1234"
+    
+
 
     # For sensor
     PCAP_WATCH_DIR:str = "./PAC_WATCH"
