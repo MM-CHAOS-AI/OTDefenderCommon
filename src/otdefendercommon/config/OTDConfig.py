@@ -22,6 +22,7 @@ class OTDConfig(BaseSettings):
 
 
     # For sensor
+    SENSOR_TAG:str = "448933dd8c708924d549a049b7be05a10c13b2f9d4c10b3127fb0d0a40cb8476"
     PCAP_WATCH_DIR:str = "./PAC_WATCH"
     PCAP_PROCESSED_DIR:str = "./PAC_PROCESSED"
     SENSOR_EVENT_TRIGGER_SEC:int = 10
