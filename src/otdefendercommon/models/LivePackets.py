@@ -48,6 +48,6 @@ class LivePackets(Base):
 
     __table_args__ = (
         Index('idx_asset_timestamp', 'asset_id', 'timestamp'),
-        Index('idx_ips', 'src_ip', 'dst_ip'),
-        Index('idx_macs', 'src_mac', 'dst_mac'),
+        Index('idx_ips_live_packets', 'src_ip', 'dst_ip'),
+        Index('idx_macs_live_packets', 'src_mac', 'dst_mac'),
     )
