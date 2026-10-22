@@ -31,7 +31,7 @@ class OTDConfig(BaseSettings):
 
     #LOGGING 
     LOG_FILE_PATH:str = "./logs/OTSensorMain_App.log"
-    LOG_MAX_SIZE:int = 100 * 1024 * 1024,  # 100 MB
+    LOG_MAX_SIZE:int = (100 * 1024 * 1024),  # 100 MB
     LOGGING_MODE:str = "INFO"
     LOG_BACKUP_COUNT:int = 5
 
