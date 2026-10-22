@@ -7,7 +7,7 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy.engine import Engine
 
-from database.base import Base
+from otdefendercommon.database.base import Base
 
 
 class CaptureSessionFiles(Base):

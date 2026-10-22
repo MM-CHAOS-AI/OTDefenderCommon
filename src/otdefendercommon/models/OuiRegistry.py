@@ -3,7 +3,7 @@ from sqlalchemy import String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 
-from database.base import Base
+from otdefendercommon.database.base import Base
 
 
 class OuiRegistry(Base):

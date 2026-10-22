@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional, List
 from sqlalchemy import String, Text, Integer, Float, DateTime, ForeignKey, Index, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from database.base import Base
+from otdefendercommon.database.base import Base
 
 class OTSensor(Base):
     __tablename__ = "ot_sensors"

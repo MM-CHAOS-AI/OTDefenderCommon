@@ -11,3 +11,4 @@ For Sync with latest code
 -----------------------------------
 uv lock --upgrade-package OTDefenderCommon
 
+better command is uv sync --upgrade-package otdefendercommon
