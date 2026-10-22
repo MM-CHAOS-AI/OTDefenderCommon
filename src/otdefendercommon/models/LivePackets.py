@@ -5,7 +5,7 @@ from sqlalchemy import (
     ForeignKey, DateTime, Index, Boolean
 )
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from otdefendermain.database.db_manager import Base
+from database.base import Base
 
 
 class LivePackets(Base):
