@@ -45,6 +45,9 @@ class OTDConfig(BaseSettings):
     LOGGING_MODE:str = "INFO"
     LOG_BACKUP_COUNT:int = 5
 
+    #Tus Router for file upload.
+    TUS_ROUTER_STORE_DIR:str= "/tmp/TUS_UPLOADS/"
+
     # @computed_field
     # @property
     # def DATABASE_URL(self) -> str:
