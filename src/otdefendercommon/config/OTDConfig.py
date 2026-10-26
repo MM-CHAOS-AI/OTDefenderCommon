@@ -45,10 +45,10 @@ class OTDConfig(BaseSettings):
     LOGGING_MODE:str = "INFO"
     LOG_BACKUP_COUNT:int = 5
 
-    @computed_field
-    @property
-    def DATABASE_URL(self) -> str:
-        return f"sqlite:///{self.OTDEF_DB_DIR}/{self.OTDEF_DB_FILE}"
+    # @computed_field
+    # @property
+    # def DATABASE_URL(self) -> str:
+    #     return f"sqlite:///{self.OTDEF_DB_DIR}/{self.OTDEF_DB_FILE}"
 
     # Tell Pydantic to read from the local .env file automatically
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
