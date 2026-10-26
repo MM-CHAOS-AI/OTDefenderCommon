@@ -9,10 +9,10 @@ class OTDConfig(BaseSettings):
     RUN_MODE:str = "DEV"
     
     #DB Settings
-    DB_DIALECT= "mariadb"
-    DATABASE_URL= "mysql+pymysql://username:password@localhost:3306/database_name"
-    DB_USER= "otdef_user1"
-    DB_PASSWORD= "otdef@user1"
+    DB_DIALECT:str= "mariadb"
+    DATABASE_URL:str= "mysql+pymysql://username:password@localhost:3306/database_name"
+    DB_USER:str= "otdef_user1"
+    DB_PASSWORD:str= "otdef@user1"
 
 
     OTDEF_DB_FILE:str = "otdefdb_current.db"
