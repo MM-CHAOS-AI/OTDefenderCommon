@@ -36,6 +36,8 @@ class OTAssets(Base):
     health_logs: Mapped[List["OTAssetHealth"]] = relationship(
         back_populates="asset", cascade="all, delete-orphan"
     )
+    # Add this line to define the back-relation for packets
+    packets = relationship("LivePackets", back_populates="asset") 
 
     # Indexes for asset network lookups
     __table_args__ = (

@@ -3,6 +3,9 @@ from sqlalchemy.pool import StaticPool
 from otdefendercommon.database.base import Base
 import otdefendercommon.models  # Forces registration of all models
 
+from otdefendercommon.models.LivePackets import LivePackets
+
+
 
 def test_model_mappings():
     # Use StaticPool to maintain a stable, shared in-memory SQLite instance for the session
@@ -15,6 +18,9 @@ def test_model_mappings():
     
     print("Testing SQLAlchemy model mapping and relationship resolution...")
     Base.metadata.create_all(bind=engine)
+
+    packet_obj = LivePackets()
+
     print("Success! All models and relationships initialized without errors.")
 
 if __name__ == "__main__":
