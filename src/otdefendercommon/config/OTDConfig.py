@@ -7,12 +7,22 @@ class OTDConfig(BaseSettings):
     ENTERPRISE_MANAGER_HOST:str = "localhost"
     OTDEF_VERSION:str = "0.0.0"
     RUN_MODE:str = "DEV"
+    
+    #DB Settings
+    DB_DIALECT= "mariadb"
+    DATABASE_URL= "mysql+pymysql://username:password@localhost:3306/database_name"
+    DB_USER= "otdef_user1"
+    DB_PASSWORD= "otdef@user1"
+
+
     OTDEF_DB_FILE:str = "otdefdb_current.db"
     OTDEF_DB_DIR:str = "./otdb/"
     OTDEF_DB_BACKUP:str = "/home/user/Unix_Extra/OTDefender/DB_BACKUP/"
     TIMEOUT:float = 30.0
     DEBUG:bool = True
     DB_ECHO:bool = False
+
+    
     #RAPID MQ
     EM_MQ_QUEUE_NAME:str = "OTDEF_EM_QUEUE"
     EM_MQ_PORT:int = 5672
