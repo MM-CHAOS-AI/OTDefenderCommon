@@ -12,7 +12,7 @@ class LivePackets(Base):
     __tablename__ = "live_packets"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    asset_id: Mapped[int] = mapped_column(ForeignKey("ot_assets.id", ondelete="CASCADE"), index=True, nullable=False)
+    asset_id: Mapped[int] = mapped_column(ForeignKey("ot_assets.id", ondelete="RESTRICT"), index=True, nullable=False)
     in_sensor_id: Mapped[int] = mapped_column(Integer, nullable=False)
     interface_id: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
     interface_name: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)

@@ -9,7 +9,7 @@ class OTSensorHealth(Base):
     __tablename__ = "ot_sensor_health"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="CASCADE"), index=True)
+    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="RESTRICT"), index=True)
     health_status: Mapped[str] = mapped_column(String(50), nullable=False)  # e.g., 'Healthy', 'Warning', 'Critical'
     cpu: Mapped[float] = mapped_column(Float, nullable=False)               # CPU usage percentage
     memory: Mapped[float] = mapped_column(Float, nullable=False)            # Memory usage percentage

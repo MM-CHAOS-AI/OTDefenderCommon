@@ -15,7 +15,7 @@ class CaptureInterfaces(Base):
     __tablename__ = "capture_interfaces"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="CASCADE"), index=True)
+    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="RESTRICT"), index=True)
     interface_id_in_file: Mapped[int] = mapped_column(Integer, nullable=False)  # e.g., 0, 1 from IDB[cite: 2]
     name: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)     # e.g., 'eth0'[cite: 2]
     link_type: Mapped[Optional[str]] = mapped_column(String(50), nullable=True) # e.g., 'EN10MB'[cite: 2]

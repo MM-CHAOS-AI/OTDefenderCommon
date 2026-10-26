@@ -9,7 +9,7 @@ class OTAssetHealth(Base):
     __tablename__ = "ot_asset_health"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    asset_id: Mapped[int] = mapped_column(ForeignKey("ot_assets.id", ondelete="CASCADE"), index=True)
+    asset_id: Mapped[int] = mapped_column(ForeignKey("ot_assets.id", ondelete="RESTRICT"), index=True)
     health_status: Mapped[str] = mapped_column(String(50), nullable=False)
     last_packet_timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)
     timestamp: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now(), nullable=False)

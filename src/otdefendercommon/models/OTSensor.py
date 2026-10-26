@@ -8,7 +8,7 @@ class OTSensor(Base):
     __tablename__ = "ot_sensors"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    enterprise_id: Mapped[int] = mapped_column(ForeignKey("ot_enterprises.id", ondelete="CASCADE"), index=True)
+    enterprise_id: Mapped[int] = mapped_column(ForeignKey("ot_enterprises.id", ondelete="RESTRICT"), index=True)
     sensor_name: Mapped[str] = mapped_column(String(255), nullable=False)
     location: Mapped[str] = mapped_column(String(255), nullable=False)
     mac: Mapped[str] = mapped_column(String(20), index=True, nullable=False)

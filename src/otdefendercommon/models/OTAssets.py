@@ -11,7 +11,7 @@ class OTAssets(Base):
     __tablename__ = "ot_assets"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="CASCADE"), index=True)
+    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="RESTRICT"), index=True)
     asset_name: Mapped[str] = mapped_column(String(255), nullable=False)
     asset_company: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     asset_description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)

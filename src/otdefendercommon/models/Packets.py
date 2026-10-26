@@ -14,7 +14,7 @@ class Packets(Base):
     __tablename__ = "packets"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="CASCADE"), index=True)
+    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="RESTRICT"), index=True)
     interface_id: Mapped[Optional[int]] = mapped_column(ForeignKey("capture_interfaces.id", ondelete="SET NULL"), nullable=True)
     
     packet_index: Mapped[int] = mapped_column(BigInteger, nullable=False)
