@@ -17,7 +17,7 @@ VALUES
 
 SELECT * FROM ot_enterprise oe ;
 
-select * from ot_substations os;
+select * from ot_substations os;	
 
 select * from ids_sensors is2 ;
 
