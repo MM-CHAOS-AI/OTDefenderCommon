@@ -3,7 +3,7 @@ from sqlalchemy import String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column
 from sqlalchemy.sql import func
 
-from otdefendermain.database.db_manager import Base
+from otdefendercommon.database.base import Base
 
 
 class OuiRegistry(Base):
@@ -11,7 +11,9 @@ class OuiRegistry(Base):
 
     oui: Mapped[str] = mapped_column(String(50), primary_key=True)
     manufacturer: Mapped[str] = mapped_column(String(255), nullable=False)
-    registry: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    # registry: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    # Change 'registry' to 'registry_name' or map it explicitly:
+    registry_name: Mapped[str] = mapped_column("registry", String(100), nullable=True)
     short_name: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
     device_type: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
     registered_date: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)

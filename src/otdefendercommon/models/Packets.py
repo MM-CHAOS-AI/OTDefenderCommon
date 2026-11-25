@@ -7,14 +7,14 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
 from sqlalchemy.engine import Engine
 
-from otdefendermain.database.db_manager import Base
+from otdefendercommon.database.base import Base
 
 
 class Packets(Base):
     __tablename__ = "packets"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="CASCADE"), index=True)
+    session_id: Mapped[int] = mapped_column(ForeignKey("capture_sessions_files.id", ondelete="RESTRICT"), index=True)
     interface_id: Mapped[Optional[int]] = mapped_column(ForeignKey("capture_interfaces.id", ondelete="SET NULL"), nullable=True)
     
     packet_index: Mapped[int] = mapped_column(BigInteger, nullable=False)
@@ -43,8 +43,8 @@ class Packets(Base):
     # Composite indexes for common analytical queries[cite: 6]
     __table_args__ = (
         Index('idx_session_timestamp', 'session_id', 'timestamp'),
-        Index('idx_ips', 'src_ip', 'dst_ip'),
-        Index('idx_macs', 'src_mac', 'dst_mac'),
+        Index('idx_ips_packets', 'src_ip', 'dst_ip'),
+        Index('idx_macs_packets', 'src_mac', 'dst_mac'),
     )
 
     

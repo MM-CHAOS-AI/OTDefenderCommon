@@ -2,7 +2,7 @@ from datetime import datetime
 from typing import Optional, List
 from sqlalchemy import String, Text, Integer, Float, DateTime, ForeignKey, Index, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from otdefendermain.database.db_manager import Base
+from otdefendercommon.database.base import Base
 
 
 
@@ -11,7 +11,7 @@ class OTAssets(Base):
     __tablename__ = "ot_assets"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="CASCADE"), index=True)
+    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="RESTRICT"), index=True)
     asset_name: Mapped[str] = mapped_column(String(255), nullable=False)
     asset_company: Mapped[Optional[str]] = mapped_column(String(255), nullable=True)
     asset_description: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
@@ -36,6 +36,8 @@ class OTAssets(Base):
     health_logs: Mapped[List["OTAssetHealth"]] = relationship(
         back_populates="asset", cascade="all, delete-orphan"
     )
+    # Add this line to define the back-relation for packets
+    packets = relationship("LivePackets", back_populates="asset") 
 
     # Indexes for asset network lookups
     __table_args__ = (

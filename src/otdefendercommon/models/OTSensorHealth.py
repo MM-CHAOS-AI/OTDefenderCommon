@@ -2,14 +2,14 @@ from datetime import datetime
 from typing import Optional, List
 from sqlalchemy import String, Text, Integer, Float, DateTime, ForeignKey, Index, func, BigInteger
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from otdefendermain.database.db_manager import Base
+from otdefendercommon.database.base import Base
 
 
 class OTSensorHealth(Base):
     __tablename__ = "ot_sensor_health"
 
     id: Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
-    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="CASCADE"), index=True)
+    sensor_id: Mapped[int] = mapped_column(ForeignKey("ot_sensors.id", ondelete="RESTRICT"), index=True)
     health_status: Mapped[str] = mapped_column(String(50), nullable=False)  # e.g., 'Healthy', 'Warning', 'Critical'
     cpu: Mapped[float] = mapped_column(Float, nullable=False)               # CPU usage percentage
     memory: Mapped[float] = mapped_column(Float, nullable=False)            # Memory usage percentage

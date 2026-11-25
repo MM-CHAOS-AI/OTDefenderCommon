@@ -4,8 +4,17 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class OTDConfig(BaseSettings):
     # Declare properties with explicit Python type hints
+    ENTERPRISE_MANAGER_HOST:str = "localhost"
     OTDEF_VERSION:str = "0.0.0"
     RUN_MODE:str = "DEV"
+    
+    #DB Settings
+    DB_DIALECT:str= "mariadb"
+    DATABASE_URL:str= "mysql+pymysql://username:password@localhost:3306/database_name"
+    DB_USER:str= "otdef_user1"
+    DB_PASSWORD:str= "otdef@user1"
+
+
     OTDEF_DB_FILE:str = "otdefdb_current.db"
     OTDEF_DB_DIR:str = "./otdb/"
     OTDEF_DB_BACKUP:str = "/home/user/Unix_Extra/OTDefender/DB_BACKUP/"
@@ -13,10 +22,36 @@ class OTDConfig(BaseSettings):
     DEBUG:bool = True
     DB_ECHO:bool = False
 
-    @computed_field
-    @property
-    def DATABASE_URL(self) -> str:
-        return f"sqlite:///{self.OTDEF_DB_DIR}/{self.OTDEF_DB_FILE}"
+    
+    #RAPID MQ
+    EM_MQ_QUEUE_NAME:str = "OTDEF_EM_QUEUE"
+    EM_MQ_PORT:int = 5672
+    EM_MQ_USER:str = "OTDEF_USER"
+    EM_MQ_PASS:str = "OTDEF_PASS@1234"
+    
+
+
+    # For sensor
+    SENSOR_TAG:str = "448933dd8c708924d549a049b7be05a10c13b2f9d4c10b3127fb0d0a40cb8476"
+    PCAP_WATCH_DIR:str = "./PAC_WATCH"
+    PCAP_PROCESSED_DIR:str = "./PAC_PROCESSED"
+    SENSOR_EVENT_TRIGGER_SEC:int = 10
+    PCAP_MERGE_EVENT_TRIGGER_SEC:int = 3600
+    PCAP_MERGE_DIR:str = "./PCAP_MERGED"
+
+    #LOGGING 
+    LOG_FILE_PATH:str = "./logs/OTSensorMain_App.log"
+    LOG_MAX_SIZE:int = (100 * 1024 * 1024),  # 100 MB
+    LOGGING_MODE:str = "INFO"
+    LOG_BACKUP_COUNT:int = 5
+
+    #Tus Router for file upload.
+    TUS_ROUTER_STORE_DIR:str= "/tmp/TUS_UPLOADS/"
+
+    # @computed_field
+    # @property
+    # def DATABASE_URL(self) -> str:
+    #     return f"sqlite:///{self.OTDEF_DB_DIR}/{self.OTDEF_DB_FILE}"
 
     # Tell Pydantic to read from the local .env file automatically
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8")
